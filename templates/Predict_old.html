@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Detection of Panama Disease Based on Deep Learning RestNet50 Method</title>
+</head>
+<style>
+    body{
+        text-align:center;
+    }
+</style>
+<body background="static/農委會繪圖／邱柏綱.png" >
+       <div style="background-color: floralwhite;width: 100%;height: 100px;margin-top: -20px">
+        <div style="margin-top: -20px">
+            <H2>運用人工智慧中深度學習技術於影像辨識</H2>
+        </div>
+           
+       </div>
+   <br>
+   <div style="width: 415px;height: 300px;position: absolute;top: 40%;left: 50%;margin: -150px 0 0 -210px;">
+    <div style="background-color: white;align-items: center">
+        <form id="upload-file" method='POST' enctype='multipart/form-data' background="orange">
+            <label for="imageUpload" class="btn btn-primary btn-lg" id="imageUpload-skin">
+                選擇圖片
+            </label>
+            <input style= "display:none" type="file" name="image" targetID="preview_progressbarTW_img" onchange="readURL(this)" id="imageUpload" accept=".png, .jpg, .jpeg"/>
+            <p></p>
+            <img id="preview_progressbarTW_img" width="90%" src="static/CCBDA_logo.png" />
+            <p></p>
+        </form>
+        
+        <div class="image-section" style="display:none;">
+            <div class="img-preview">
+                <div id="imagePreview">
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary btn-lg" id="btn-predict">檢測!</button>
+        </div>
+            <div class="loader" style="display:none;"></div>
+            <h3 id="result"></h3>
+            <p></p>
+        <div>
+            <input type="button" class="btn btn-primary btn-lg" value="重新選擇圖片" onclick="reloadPage()" />
+        </div>
+    </div>
+    <br>
+   <div>
+       <H3><div>訓練集正確率圖表</div></H3>
+        <img id="preview_progressbarTW_img" src="static/訓練集正確率4.png" />
+       <H3><div>訓練集損失率圖表</div></H3>
+        <img id="preview_progressbarTW_img" src="static/訓練集損失率4.png" />
+        <H3><div>驗證集正確率圖表</div></H3>
+        <img id="preview_progressbarTW_img" src="static/驗證集正確率4.png" />
+        <H3><div>驗證集損失率圖表</div></H3>
+        <img id="preview_progressbarTW_img" src="static/驗證集損失率4.png" />
+        <H3><div>MResNet模型評估表</div></H3> 
+        <table style="background-color:white;" class="table table-bordered table-hover table-condensed">
+        <tbody><tr>
+        <td>epoch</td>
+        <td>訓練集正確率</td>
+        <td>訓練集損失率</td>
+        <td>驗證集正確率</td>
+        <td>驗證集損失率</td>
+        </tr>
+        <tr>
+        <td>1</td>
+        <td>0.6091</td>
+        <td>1.2753</td>
+        <td>0.7982</td>
+        <td>1.2753</td>
+        </tr>
+        <tr>
+        <td>2</td>
+        <td>0.7544</td>
+        <td>0.7565</td>
+        <td>0.9030</td>
+        <td>0.7565</td>
+        </tr>
+        <tr>
+        <td>3</td>
+        <td>0.8357</td>
+        <td>0.5114</td>
+        <td>0.9326</td>
+        <td>0.5114</td>
+        </tr>
+        <tr>
+        <td>4</td>
+        <td>0.8864</td>
+        <td>0.3496</td>
+        <td>0.9507</td>
+        <td>0.3496</td>
+        </tr>
+        <tr>
+        <td>5</td>
+        <td>0.9167</td>
+        <td>0.2506</td>
+        <td>0.9682</td>
+        <td>0.2506</td>
+        </tr>
+        <tr>
+        <td>6</td>
+        <td>0.9231</td>
+        <td>0.2369</td>
+        <td>0.9731</td>
+        <td>0.2369</td>
+        </tr>
+        <tr>
+        <td>7</td>
+        <td>0.9410</td>
+        <td>0.1713</td>
+        <td>0.9792</td>
+        <td>0.1713</td>
+        </tr>
+        <tr>
+        <td>8</td>
+        <td>0.9519</td>
+        <td>0.1527</td>
+        <td>0.9846</td>
+        <td>0.1527</td>
+        </tr>
+        <tr>
+        <td>9</td>
+        <td>0.9561</td>
+        <td>0.1285</td>
+        <td>0.9863</td>
+        <td>0.1285</td>
+        </tr>
+        <tr>
+        <td>10</td>
+        <td>0.9659</td>
+        <td>0.1014</td>
+        <td>0.9896</td>
+        <td>0.1014</td>
+        </tr>
+        <tr>
+        <td>11</td>
+        <td>0.9716</td>
+        <td>0.0808</td>
+        <td>0.9918</td>
+        <td>0.0808</td>
+        </tr>
+        <tr>
+        <td>12</td>
+        <td>0.9773</td>
+        <td>0.0710</td>
+        <td>0.9929</td>
+        <td>0.0710</td>
+        </tr>
+        <tr>
+        <td>13</td>
+        <td>0.9760</td>
+        <td>0.0660</td>
+        <td>0.9967</td>
+        <td>0.0660</td>
+        </tr>
+        <tr>
+        <td>14</td>
+        <td>0.9788</td>
+        <td>0.0559</td>
+        <td>0.9967</td>
+        <td>0.0559</td>
+        </tr>
+        <tr>
+        <td>15</td>
+        <td>0.9817</td>
+        <td>0.0517</td>
+        <td>0.9962</td>
+        <td>0.0517</td>
+        </tr>
+        <tr>
+        <td>16</td>
+        <td>0.9832</td>
+        <td>0.0514</td>
+        <td>0.9973</td>
+        <td>0.0514</td>
+        </tr>
+        <tr>
+        <td>17</td>
+        <td>0.9834</td>
+        <td>0.0505</td>
+        <td>0.9967</td>
+        <td>0.0505</td>
+        </tr>
+        <tr>
+        <td>18</td>
+        <td>0.9854</td>
+        <td>0.0462</td>
+        <td>0.9973</td>
+        <td>0.0462</td>
+        </tr>
+        <tr>
+        <td>19</td>
+        <td>0.9893</td>
+        <td>0.0365</td>
+        <td>0.9973</td>
+        <td>0.0365</td>
+        </tr>
+        <tr>
+        <td>20</td>
+        <td>0.9889</td>
+        <td>0.0334</td>
+        <td>0.9973</td>
+        <td>0.0334</td>
+        </tr>
+        <tr>
+        <td>21</td>
+        <td>0.9893</td>
+        <td>0.0356</td>
+        <td>0.9978</td>
+        <td>0.0356</td>
+        </tr>
+        <tr>
+        <td>22</td>
+        <td>0.9906</td>
+        <td>0.0282</td>
+        <td>0.9967</td>
+        <td>0.0282</td>
+        </tr>
+        <tr>
+        <td>23</td>
+        <td>0.9886</td>
+        <td>0.0362</td>
+        <td>0.9978</td>
+        <td>0.0362</td>
+        </tr>
+        <tr>
+        <td>24</td>
+        <td>0.9926</td>
+        <td>0.0260</td>
+        <td>0.9978</td>
+        <td>0.0260</td>
+        </tr>
+        <tr>
+        <td>25</td>
+        <td>0.9926</td>
+        <td>0.0225</td>
+        <td>0.9973</td>
+        <td>0.0225</td>
+        </tr>
+        <tr>
+        <td>26</td>
+        <td>0.9925</td>
+        <td>0.0222</td>
+        <td>0.9984</td>
+        <td>0.0222</td>
+        </tr>
+        <tr>
+        <td>27</td>
+        <td>0.9913</td>
+        <td>0.0269</td>
+        <td>0.9984</td>
+        <td>0.0269</td>
+        </tr>
+        <tr>
+        <td>28</td>
+        <td>0.9941</td>
+        <td>0.0152</td>
+        <td>0.9989</td>
+        <td>0.0152</td>
+        </tr>
+        <tr>
+        <td>29</td>
+        <td>0.9932</td>
+        <td>0.0199</td>
+        <td>0.9989</td>
+        <td>0.0199</td>
+        </tr>
+        <tr>
+        <td>30</td>
+        <td>0.9950</td>
+        <td>0.0146</td>
+        <td>0.9984</td>
+        <td>0.0146</td>
+        </tr>
+        </tbody></table>           
+   </div>
+   <p>
+   <div style="width: 100%;text-align: center;">背景圖片來源:行政院農委會</div>
+</div>
+</body>
+<script>
+function readURL(input){
+
+  if(input.files && input.files[0]){
+
+    var imageTagID = input.getAttribute("targetID");
+
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+
+       var img = document.getElementById(imageTagID);
+
+       img.setAttribute("src", e.target.result)
+
+    }
+
+    reader.readAsDataURL(input.files[0]);
+
+  }
+
+}
+//reload
+function reloadPage(){
+    window.location.reload()
+  }
+//Predict
+$('#btn-predict').click(function(){
+    //hidden choose
+    document.getElementById("imageUpload-skin").style.display="none";
+    //判斷是否有選擇圖片
+    var imgsrc= $("#preview_progressbarTW_img").attr("src");
+    if(imgsrc == "static/CCBDA_logo.png"){
+        alert("請選擇圖片");
+        window.location.reload()
+    }
+
+	var form_data = new FormData($('#upload-file')[0]);
+    //fullpath=document.getElementById("imageUpload").value;
+    //show loading animation
+    $(this).hide();
+    $('.loader').show();
+    //Make prediction by calling api /predict
+    $('#result').text('檢測中...');
+    $.ajax({
+        type:'POST',
+        url:'/predict',
+        data:form_data,
+		processData: false,
+        contentType:false,
+        cache:false,
+        processData:false,
+        async:true,
+        success: function(data){
+            //Get and display thw result
+            $('#result').fadeOut();
+            $('.loader').hide();
+            $('#result').fadeIn(600);
+            $('#result').text('檢測結果: '+ data);
+            console.log('Success!');
+			
+        },
+    });
+}); 
+</script>
+</html>

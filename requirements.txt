@@ -1,0 +1,9 @@
+Flask
+gunicorn
+Werkzeug
+numpy
+Keras
+gevent
+pillow
+h5py
+tensorflow

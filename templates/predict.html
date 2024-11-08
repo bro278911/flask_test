@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--網頁icon-->
+    <link rel="icon" href="image/LOGO.png" type="image/x-icon">
+    <!-- CSS-->
+    <link href="static/css/style.css" rel="stylesheet" />
+    <!--  notify  -->
+    <link href="static/css/notify/notyf.min.css" rel="stylesheet" />
+    <!--  sweetalert2  -->
+    <link href="static/css/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <!-- ================== CSS bootstrap-select ================== -->
+    <link href="static/css/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <!--  fullcalendar行事曆  -->
+    <link href='static/js/lib/main.css' rel='stylesheet' />
+    <!--  table  -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css">
+    <!--  時間24小時  -->
+    <link href="static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+    <meta charset="UTF-8" />
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+    <meta name="description" content="沐恩之家個案管理系統">
+    <meta name="author" content="HANG">
+    <title>使用基於高效能深度學習模型以探討 CLAHE 對於大腸息肉 偵測於一階段方法之效能比較</title>
+    <!--行事曆自動換行-->
+    <style>
+        .logo{
+          display:block;
+          background: url(images/logo.png) no-repeat;
+          width: 100px;
+            height: 40px;
+            text-indent: 101%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<!--<SVG>引入bootstrap icon-->
+
+<body>
+    <!--讀取進度條-->
+    <div class="preloader-it">
+        <div class="la-anim-1"></div>
+    </div>
+    <!--/讀取進度條-->
+    <div class="wrapper">
+        <!-- 最上方導覽列 -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block mr-20 pull-left" href="javascript:void(0);">
+                <i><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg></i>
+            </a>
+            <a href="index.php"><img style="margin-top:12px" class="brand-img pull-left logo" src="static/images/logo.png" /></a>
+            <ul class="nav navbar-right top-nav pull-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown">歡迎 周渲杭<span id="username"></span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                        </svg></a>
+                    <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <li>
+                            <a href="#" id="Sign_out"><i><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-power" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M5.578 4.437a5 5 0 1 0 4.922.044l.5-.866a6 6 0 1 1-5.908-.053l.486.875z" />
+                                        <path fill-rule="evenodd" d="M7.5 8V1h1v7h-1z" />
+                                    </svg></i> 登出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!--/最上方導覽列-->
+        <!--左側導覽列-->
+        <div class="fixed-sidebar-left">
+            <ul class="nav navbar-nav side-nav nicescroll-bar">
+                <li>
+                    <a href="javascript:void(0);" class="active" data-toggle="collapse" data-target="#phoneandface">SSD+VGG16</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#phoneandface">SSD+MobileNet</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#phoneandface">M2Det</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#phoneandface">CenterNet</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#phoneandface">YOLOv3</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#phoneandface">YOLOv4</a>
+                </li>
+            </ul>
+        </div>
+        <!--/左側導覽列-->
+        <!--網頁內容-->
+        <div class="page-wrapper">
+            <div class="container-fluid ">
+                <!--Title-->
+                <div class="row heading-bg  bg-blue">
+                    <!--麵包屑-->
+                    <ol class="breadcrumb">
+                        <li style="text-align: center;"><span>使用基於高效能深度學習模型以探討 CLAHE 對於大腸息肉 偵測於一階段方法之效能比較</span></li>
+                    </ol>
+                    <!--/麵包屑-->
+                </div>
+                <!-- /Title -->
+                <div class="row">
+                    <div style="zoom:80%" class="row text-center">
+                        <div class="col-sm-12">
+                            <div class="panel panel-default card-view">
+                                <div class="panel-wrapper collapse in">
+                                    <div class="panel-body">
+                                        <div class="table-wrap">
+                                            <div class="table-responsive">
+                                               
+                                                <div style="background-color: white;align-items: center">
+                                                    <form id="upload-file" method='POST' enctype='multipart/form-data' background="orange">
+                                                        <label for="imageUpload" class="btn btn-primary btn-lg" id="imageUpload-skin">
+                                                            選擇圖片
+                                                        </label>
+                                                        <input style= "display:none" type="file" name="image" targetID="preview_progressbarTW_img" onchange="readURL(this)" id="imageUpload" accept=".png, .jpg, .jpeg"/>
+                                                        <p></p>
+                                                        <img id="preview_progressbarTW_img" width="30%" src="static/CCBDA_logo.png" />
+                                                        <p></p>
+                                                    </form>
+                                                    
+                                                    <div class="image-section" style="display:none;">
+                                                        <div class="img-preview">
+                                                            <div id="imagePreview">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <button type="button" class="btn btn-primary btn-lg" id="btn-predict">檢測!</button>
+                                                    </div>
+                                                        <div class="loader" style="display:none;"></div>
+                                                        <h3 id="result"></h3>
+                                                    <div>
+                                                        <br>
+                                                        <input type="button" class="btn btn-primary btn-lg" value="重新選擇圖片" onclick="reloadPage()" />
+                                                    </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- Footer -->
+                <footer class="footer container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p>Copyright &copy; 2022國立屏東科技大學周渲杭</p>
+                        </div>
+                    </div>
+                </footer>
+                <!-- /Footer -->
+                <!-- /Title -->
+                <div class="row">
+                    <div style="zoom:80%" class="row text-center">
+                        <div class="col-sm-12">
+                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/網頁內容-->
+        </div>
+    </div>
+    <!-- /#wrapper -->
+    <!-- JavaScript -->
+    <!-- Bootstrap and jQuery -->
+    <script src="static/javascript/jquery.min.js"></script>
+    <script src="static/javascript/bootstrap.min.js"></script>
+    <!-- 表格 JavaScript -->
+    <script src="static/javascript/jquery.dataTables.min.js"></script>
+    <script src="static/javascript/dataTables-data.js"></script>
+    <!-- 滾動條 JavaScript -->
+    <script src="static/javascript/jquery.slimscroll.js"></script>
+    <!-- Fancy Dropdown JS -->
+    <script src="static/javascript/dropdown-bootstrap-extended.js"></script>
+    <!-- Init -->
+    <script src="static/javascript/init.js"></script>
+    <!-- ================== JS notify控制 ================== -->
+    <script src="static/javascript/notify/notyf.min.js"></script>
+    <!-- ================== JS sweetalert2 ================== -->
+    <script src="static/javascript/sweetalert2/sweetalert2.min.js"></script>
+    <!-- ================== JS IE sweetalert ================== -->
+    <script src="static/javascript/sweetalert2/core-js.js"></script>
+    <!-- ================== JQ cookie.js ================== -->
+    <script src="static/javascript/cookie/js.cookie-2.1.3.min.js"></script>
+    <!-- ================== 行事曆 ================== -->
+    <script src='static/js/lib/main.js'></script>
+    <!-- ================== 行事曆設定 ================== -->
+    <script src='static/js/fullcalendar.js'></script>
+    <!-- ================== 登出設定 ================== -->
+    <script src='static/js/logout.js'></script>
+    <!-- ================== moment ================== -->
+    <script src='static/javascript/moment.min.js'></script>
+    <!-- ================== table ================== -->
+    <script src="static/javascript/bootstrap-table.min.js"></script>
+    <script src="static/javascript/bootstrap-table-zh-TW.min.js"></script>
+    <!-- ================== announcement ================== -->
+    <script src="static/js/index.js"></script>
+    <!--     ==================  時間24小時 ================== -->
+    <script type="static/text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="static/text/javascript" src="js/bootstrap-datetimepicker.zh-TW.js" charset="UTF-8"></script>
+
+</body>
+<script>
+    function readURL(input){
+    
+      if(input.files && input.files[0]){
+    
+        var imageTagID = input.getAttribute("targetID");
+    
+        var reader = new FileReader();
+    
+        reader.onload = function (e) {
+    
+           var img = document.getElementById(imageTagID);
+    
+           img.setAttribute("src", e.target.result)
+    
+        }
+    
+        reader.readAsDataURL(input.files[0]);
+    
+      }
+    
+    }
+    //reload
+    function reloadPage(){
+        window.location.reload()
+      }
+    //Predict
+    $('#btn-predict').click(function(){
+        //hidden choose
+        document.getElementById("imageUpload-skin").style.display="none";
+        //判斷是否有選擇圖片
+        var imgsrc= $("#preview_progressbarTW_img").attr("src");
+        if(imgsrc == "static/CCBDA_logo.png"){
+            alert("請選擇圖片");
+            window.location.reload()
+        }
+    
+        var form_data = new FormData($('#upload-file')[0]);
+        //fullpath=document.getElementById("imageUpload").value;
+        //show loading animation
+        $(this).hide();
+        $('.loader').show();
+        //Make prediction by calling api /predict
+        $('#result').text('檢測中...');
+        //$.ajax({
+        //    type:'POST',
+        //    url:'/predict',
+        //    data:form_data,
+        //    processData: false,
+        //    contentType:false,
+        //    cache:false,
+        //    processData:false,
+        //    async:true,
+        //    success: function(data){
+                //Get and display thw result
+        $('#result').fadeOut();
+        $('.loader').hide();
+        $('#result').fadeIn(600);
+        $('#result').text('檢測結果: 狗');
+        console.log('Success!');
+                
+        //    },
+        //});
+    }); 
+    </script>
+</html>
